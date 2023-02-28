@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Db</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #meals-container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>Search Your Food</h3>
+        <input id="search-field" type="text" placeholder="search your food" alt="search-field">
+        <button onclick="searchBtn()">Search</button>
+    </header>
+    <main>
+        <section>
+            <div id="meals-container">
+               
+            </div>
+        </section>
+    </main>
+
+
+    <script src="js/app.js"></script>
+</body>
+</html>
