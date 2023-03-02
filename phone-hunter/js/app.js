@@ -7,23 +7,33 @@ const loadPhone = async (phones) => {
 // loadPhone();
 
 const displayPhone = (phones) => {
-    const phonesContainer = document.getElementById("phones-container");
-    const displayNotFound = document.getElementById("not-found");
-    const addLoader = document.getElementById("add-loader");
-    // clear past history 
-    phonesContainer.innerHTML="";
+  const phonesContainer = document.getElementById("phones-container");
+  const displayNotFound = document.getElementById("not-found");
+  const addLoader = document.getElementById("add-loader");
+  // clear past history
+  phonesContainer.innerHTML = "";
 
-    //not found message
-    if(phones.length==0){
-        displayNotFound.classList.remove("d-none");
-        
-        
-    }else{
-        displayNotFound.classList.add("d-none")
-     
-    }
-        // display 20 phones only 
-  phones = phones.slice(0,20)
+  //not found message
+  if (phones.length == 0) {
+    displayNotFound.classList.remove("d-none");
+    // toggleSpinner(false);
+    const showAll= document.getElementById("show-all");
+    showAll.classList.add("d-none");
+  } else {
+    displayNotFound.classList.add("d-none");
+    toggleSpinner(true);
+    const showAll= document.getElementById("show-all");
+    showAll.classList.remove("d-none");
+  }
+  const showAll= document.getElementById("show-all");
+  // display 20 phones only
+  if (phones.length > 10) {
+    phones = phones.slice(0, 10);
+   showAll.classList.remove("d-none");
+  }else{
+    showAll.classList.add("d-none");
+  }
+
   //display all phones
   phones.map((phone) => {
     const div = document.createElement("div");
@@ -37,14 +47,25 @@ const displayPhone = (phones) => {
     </div>
   </div>
       `;
-      phonesContainer.appendChild(div)
+    phonesContainer.appendChild(div);
   });
+  toggleSpinner(false);
 };
 
-document.getElementById("search-btn").addEventListener("click",function(){
-    const searchfield = document.getElementById('search-field');
-    const searchFildvalue = searchfield.value;
-    loadPhone(searchFildvalue);
+document.getElementById("search-btn").addEventListener("click", function () {
+  //Start loader
+  toggleSpinner(true);
+  const searchfield = document.getElementById("search-field");
+  const searchFildvalue = searchfield.value;
+  loadPhone(searchFildvalue);
+  searchfield.value = "";
+});
 
-    searchfield.value = ''
-})
+const toggleSpinner = (isLoading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isLoading) {
+    loaderSection.classList.remove("d-none");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
+};

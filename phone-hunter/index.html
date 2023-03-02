@@ -23,16 +23,31 @@
       <h3 class="text-center">Phone Hunter</h3>
       <main>
         <section class="text-center">
-            <input id="search-field" class="border rounded-3 mb-2 w-25 me-0" placeholder="search your phone" type="text">
-            <button id="search-btn" class="border border-0 rounded-end-2 ms-0">Search</button>
+          <input
+            id="search-field"
+            class="border rounded-3 mb-2 w-25 me-0"
+            placeholder="search your phone"
+            type="text"
+          />
+          <button id="search-btn" class="border border-0 rounded-end-2 ms-0">
+            Search
+          </button>
           <div id="phones-container"></div>
           <!-- Not found message  -->
           <h4 class="d-none text-warning" id="not-found">No result Found</h4>
           <!-- add loader  -->
-          <div class="d-flex justify-content-center align-items-center w-100">
-            <div id="add-loader" class="spinner-border " role="status">
-              <span class="visually-hidden">Loading...</span>
+          <div id="loader" class="d-none">
+            <div class="d-flex justify-content-center align-items-center w-100">
+              <div id="add-loader" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
             </div>
+          </div>
+
+
+          <!-- show all products  -->
+          <div id="show-all" class="d-none">
+            <button class="btn btn-primary">Show All</button>
           </div>
         </section>
       </main>
